@@ -25,6 +25,7 @@ public class AppConstants {
 	public static final String TRADING_QUOTE = "trading.quote";
 	public static final String CONNECTED = "connect.connected";
 	
+	public static final String CONNECT_FAILED = "connect.failed";
 	public static final String TRADING_PREFIX = "trading.product.";
 	
 	

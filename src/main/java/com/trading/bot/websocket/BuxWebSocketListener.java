@@ -47,6 +47,9 @@ public class BuxWebSocketListener extends WebSocketListener {
 				logger.info("========== Connected to real time feed ===========");
 				SubscriptionRequest subReq = new SubscriptionRequest(CommonUtils.getSubscriptionList(), new ArrayList<>());
 				webSocket.send(objectMapper.writeValueAsString(subReq));
+			} else if(res != null && res.getT()!= null && res.getT().equalsIgnoreCase(AppConstants.CONNECT_FAILED)){
+				// you may trigger email to the dev here
+				logger.error("==============Connection failed============ res {}", res.getBody());
 			} else {
 				String actionToTake = feedProceesingSvc.determineAction(res);
 				if(!StringUtils.isEmpty(actionToTake)) {

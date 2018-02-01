@@ -59,7 +59,7 @@ public class ExceptionHandlingController {
     @ResponseBody
     public ErrorResponse handleArgumentNotValidException(HttpServletResponse response, HttpServletRequest request, MethodArgumentNotValidException e){
         response.setStatus(400);
-        ErrorResponse error = new ErrorResponse("400", "Invalid Request, " +  e.getBindingResult());
+        ErrorResponse error = new ErrorResponse("400", "Invalid Request, " + ((e.getBindingResult() != null && e.getBindingResult().getFieldError()!=null) ? e.getBindingResult().getFieldError().getDefaultMessage() : e.getBindingResult()));
         return error;
     }
     
